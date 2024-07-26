@@ -10,6 +10,7 @@ noinst_LIBRARIES=	libarchive/libarchive.a		\
 			lib/libtarsnap_aesni.a		\
 			lib/libtarsnap_arm_aes.a	\
 			lib/libtarsnap_arm_sha256.a	\
+			lib/libtarsnap_crypto_aes.a	\
 			lib/libtarsnap_rdrand.a		\
 			lib/libtarsnap_shani.a		\
 			lib/libtarsnap_sse2.a
@@ -182,7 +183,6 @@ lib_libtarsnap_a_SOURCES=					\
 		libcperciva/cpusupport/cpusupport_x86_shani.c	\
 		libcperciva/cpusupport/cpusupport_x86_sse2.c	\
 		libcperciva/cpusupport/cpusupport_x86_ssse3.c	\
-		libcperciva/crypto/crypto_aes.c			\
 		libcperciva/crypto/crypto_aes.h			\
 		libcperciva/crypto/crypto_aes_aesni.h		\
 		libcperciva/crypto/crypto_aes_aesni_m128i.h	\
@@ -367,6 +367,12 @@ nodist_lib_libtarsnap_arm_sha256_a_SOURCES=			\
 lib_libtarsnap_arm_sha256_a_CPPFLAGS=$(lib_libtarsnap_a_CPPFLAGS)
 lib_libtarsnap_arm_sha256_a_CFLAGS=`. ./cpusupport-config.h; echo $${CFLAGS_ARM_SHA256}`
 LIBTARSNAP_A+=	lib/libtarsnap_arm_sha256.a
+
+lib_libtarsnap_crypto_aes_a_SOURCES=	libcperciva/crypto/crypto_aes.c	\
+					libcperciva/crypto/crypto_aes.h
+lib_libtarsnap_crypto_aes_a_CPPFLAGS=$(lib_libtarsnap_a_CPPFLAGS)
+lib_libtarsnap_crypto_aes_a_CFLAGS=`. ./apisupport-config.h; echo $${CFLAGS_LIBCRYPTO_LOW_LEVEL_AES}`
+LIBTARSNAP_A+=	lib/libtarsnap_crypto_aes.a
 
 
 #
