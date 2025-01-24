@@ -112,7 +112,7 @@ line with which
 was invoked to create each archive is also printed.
 .PP
 If the
-\fB\--null\fP
+\fB\--null-output\fP
 argument is also specified, each archive name will be separated by a single
 null character.
 If the
@@ -732,14 +732,28 @@ option specified in a configuration file.
 (use with
 \fB\-I\fP,
 \fB\-T\fP,
-\fB\-X\fP,
-or list-archives modes only)
-Filenames or patterns are separated by null characters,
+or
+\fB\-X\fP)
+Synonym for
+\fB\--null-input\fP.
+Kept for historical reasons and compatibility with other tar utilities.
+.TP
+\fB\--null-input\fP
+(use with
+\fB\-I\fP,
+\fB\-T\fP,
+or
+\fB\-X\fP)
+Filenames, archive names, and patterns are separated by null characters,
 not by newlines.
 This is often used to read filenames output by the
 \fB\-print0\fP
 option to
 \fBfind\fP(1).
+.TP
+\fB\--null-output\fP
+(list-archives mode only)
+Archive names in output are separated by null characters, not by newlines.
 .TP
 \fB\--numeric-owner\fP
 (x mode only)
@@ -960,10 +974,10 @@ The special name
 on a line by itself will cause the current directory to be changed to
 the directory specified on the following line.
 Names are terminated by newlines unless
-\fB\--null\fP
+\fB\--null-input\fP
 is specified.
 Note that
-\fB\--null\fP
+\fB\--null-input\fP
 also disables the special handling of lines containing
 ``-C''.
 If
